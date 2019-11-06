@@ -1,0 +1,63 @@
+Talk is Wed Nov 13
+https://www.ebi.ac.uk/about/events/seminars/2019/reference-based-viral-sequence-annotation-using-vadr
+
+Reference-based viral sequence annotation using VADR
+
+Abstract: 
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Thousands to millions of sequences of well studied human pathogenic
+viruses, such as HIV, Influenza, Dengue virus, and Norovirus, exist in
+publicly available databases like GenBank and ENA. In GenBank, many of
+these sequences, with the exception of Influenza sequences, are not
+consistently or thoroughly annotated with all known sequence features,
+such as mature peptides and structural RNA regions. This is partly due
+to the lack of a consistent analysis pipeline for these viral
+sequences that could be applied at the time of submission. Influenza
+is an exception, for which a specialized annotation tool has been in
+use for the past several years at NCBI for influenza sequence
+submissions. VADR (Viral Annotation DefineR) is a general tool for the
+reference-based annotation and validation of viral sequences. Using
+probabilistic models (hidden Markov Models (HMMs) and covariance
+models (CMs)) of a RefSeq representative a viral species, VADR checks
+input sequences for more than 40 different types of potential
+problems, including early stop codons and regions of low similarity to
+the RefSeq, and maps the RefSeq model annotation onto each sequence
+via an alignment of the sequence to the RefSeq. VADR uses information
+on the secondary structure of the reference model, when available, to
+inform the alignment, and can annotate any feature from the reference
+model down to a length of one nucleotide. At NCBI, VADR is currently
+in use for the analysis of incoming Norovirus and Dengue virus
+sequences. VADR is a general framework that can be extended to use
+alignments of reference sequences instead of single sequences, and
+could be useful for the validation and annotation of any conserved
+sequence family or sequence feature with length up to about 20Kb. At
+NCBI, we are currently testing alignment-based VADR models on the
+automatic validation of incoming sequence submissions of the popular
+metazoan marker gene cytochrome c oxidase 1 (Cox1), with the hope of
+eventually extending its use to other commonly submitted marker genes.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Outline:
+- Background: virus submissions
+  - table of most common viruses (with lengths?)
+  - virus variation resource
+  - flu annotation tool
+- one-model-per-feature strategy 
+  - worked fine for norovirus but not for dengue 
+  - examples of norovirus
+  - examples of dengue failures
+- one-model-per-genome strategy
+  [summary of paper]
+  - 4 stages
+  - comparison with VAPiD and VIGOR
+  - alerts, alert table
+  - structural RNAs in Dengue
+- marker genes
+- conclusion: 
+  - similar to xfam but looks for specific errors that 
+    profile methods (hmmer/infernal) assume are not there. assumption
+    is that observed sequence is non-artifactual
+- future directions
+  o alignments
+  o profile-based protein validation replacing blastx
+  o HMMER4: memory efficient alignment
