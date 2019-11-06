@@ -177,92 +177,127 @@ West Nile virus           &       21,563 & \emph{Flaviviridae}     \\ % 11082
 Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \end{tabular}
 
+
+
+
 \vfill
 
 \end{center}
 \end{slide}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Development of a general tool for reference-based annotation
-  of virus sequences}
+\textbf{Viral sequences are not systematically or thoroughly annotated}
 \end{center}
 
+\small
+\begin{itemize}
+\item Examples of incomplete annotation: 
+  \begin{itemize}
+  \item Rfam families are rarely to never annotated in viral genomes
+    (roughly 200 families)
+  \item Less than 2\% of Norovirus sequences have mature peptide
+    annotation. 
+\end{itemize}
+\item Systematic and complete annotation would benefit viral
+  researchers and facilitate comparative analyses
+\end{itemize}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+  \item VADR (Viral Annotation DefineR) uses RefSeqs to validate and
+    annotate viral sequences
+
+\includegraphics[width=7in]{figs/vadr}
+\end{center}
+
+\small
 \begin{itemize}
   \item We chose Norovirus and Dengue virus sequences for the pilot
     project.
-  \item Strategy is to use RefSeqs to annotate and validate at the
-    same time.
 \end{itemize}
 
-\end{slide}
+%\small
+%\begin{itemize}
+%\item Build a model (covariance model) from a RefSeq (or alignment) using \texttt{v-build.pl}
+%\begin{itemize}
+%  \item includes boundaries of CDS, mat\_peptide, ncRNA and other features
+%\end{itemize}
+
+%\item Incoming sequences are compared against a library of models to find
+%  the best-matching model which is used to annotate the sequence using
+%  \texttt{v-annotate.pl}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{VADR: Viral Annotation DefineR}
+\textbf{VADR-based sequence validation: unexpected characteristics are identified and reported 
+  as \emph{alerts}}
+\end{center}
 
+\scriptsize
 \begin{itemize}
-\item Build a model (covariance model) from a RefSeq (or alignment) using \texttt{v-build.pl}
-\begin{itemize}
-  \item includes boundaries of CDS, mat\_peptide, ncRNA and other features
-\end{itemize}
-
-\item Incoming sequences are compared against a library of models to find
-  the best-matching model which is used to annotate the sequence using
-  \texttt{v-annotate.pl}.
-
-\item Unexpected characteristics are identified and reported to the
-  user as \emph{alerts} (e.g. early stop codon, dissimilar
-  region). 
-
-\item Sequences with 0 alerts \emph{pass} and are cleared for
+\item Examples of alerts: early stop codon, dissimilar region
+\item Some alerts are \emph{fatal}
+\item Sequences with 1 or more fatal alerts \emph{fail}
+\item Sequences with 0 fatal alerts \emph{pass} and are cleared for
   entry into GenBank (foosh).
 \end{itemize}
 
-\includegraphics[width=6in]{figs/vadr}
-\end{center}
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{\texttt{v-build.pl} example ? }
-\end{center}
 
-\vfill
+\includegraphics[width=6in]{figs/ss-001477-top}
+\includegraphics[width=6in]{figs/ss-001477-mid}
+
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{VADR 1.0 library ? HERE? SOMEWHERE ELSE? }
-\end{center}
 
-\vfill
+\includegraphics[width=6in]{figs/ss-001477-mid}
+\includegraphics[width=6in]{figs/ss-001477-bot}
 
 \end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\includegraphics[width=9in]{figs/ss-001477-minfo}
+
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 \textbf{\texttt{v-annotate.pl} annotates each sequence using its
   best-matching model}
 
+\small
 \begin{description}
-\item[Classification]: Each sequence $S$ is compared against all models 
+\item[Classification]: Each sequence is compared against all models 
   to determine its best-matching model to determine score only (no
   hit boundaries)
 
-\item[Coverage determination]: Each sequence $S$ is compared against
+\item[Coverage determination]: Each sequence is compared against
   its best matching model again to obtain hit boundaries
 
-\item[Alignment]: Each sequence $S$ is aligned to its best-matching
+\item[Alignment]: Each sequence is aligned to its best-matching
   model (globally with respect to sequence, locally with respect to
-  the model) and feature annotation is mapped from model to sequence.
+  the model) and feature annotation is mapped from model to sequence
 
 \item[Protein validation]: Predicted CDS features in each sequence are
   compared against proteins from Reference model using BLASTX
 \end{description}
 
-Different types of alerts are identified and reported at each stage.
+\emph{Different types of alerts are identified and reported at each stage}
 
 \end{center}
 
@@ -271,11 +306,9 @@ Different types of alerts are identified and reported at each stage.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{\texttt{v-annotate.pl}: classification stage}
-\end{center}
 
 \begin{description}
-\item[Classification]: Each sequence $S$ is compared against all models 
+\item[Classification]: Each sequence is compared against all models 
   to determine its best-matching model to determine score only (no
   hit boundaries)
 \end{description}
@@ -286,8 +319,9 @@ Different types of alerts are identified and reported at each stage.
   (single RefSeq).
 \end{itemize}
 
-Possible alert types:
+\includegraphics[width=6in]{figs/ss-class-alert-list}
 
+\end{center}
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,7 +331,7 @@ Possible alert types:
 \end{center}
 
 \begin{description}
-\item[Coverage determination]: Each sequence $S$ is compared against
+\item[Coverage determination]: Each sequence is compared against
   its best matching model again to obtain hit boundaries
 \end{description}
 
@@ -318,7 +352,7 @@ Possible alert types:
 \end{center}
 
 \begin{description}
-\item[Alignment]: Each sequence $S$ is aligned to its best-matching
+\item[Alignment]: Each sequence is aligned to its best-matching
   model (globally with respect to sequence, locally with respect to
   the model) and feature annotation is mapped from model to sequence.
 \end{description}
