@@ -38,10 +38,10 @@ eventually extending its use to other commonly submitted marker genes.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Outline:
-- Background: virus submissions
-  - table of most common viruses (with lengths?)
-  - virus variation resource
-  - flu annotation tool
+- Background 
+  - GenBank is big (counts from GenBank paper)
+  - Sequence submissions are handled by NCBI experts
+  - Virus table
 - one-model-per-feature strategy 
   - worked fine for norovirus but not for dengue 
   - examples of norovirus
