@@ -1,0 +1,434 @@
+%% BioMed_Central_Tex_Template_v1.06
+%%                                      %
+%  bmc_article.tex            ver: 1.06 %
+%                                       %
+% https://bmcbioinformatics.biomedcentral.com/submission-guidelines/preparing-your-manuscript
+%
+%%IMPORTANT: do not delete the first line of this template
+%%It must be present to enable the BMC Submission system to
+%%recognise this template!!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                     %%
+%%  LaTeX template for BioMed Central  %%
+%%     journal article submissions     %%
+%%                                     %%
+%%          <8 June 2012>              %%
+%%                                     %%
+%%                                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% For instructions on how to fill out this Tex template           %%
+%% document please refer to Readme.html and the instructions for   %%
+%% authors page on the biomed central website                      %%
+%% http://www.biomedcentral.com/info/authors/                      %%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%% BioMed Central currently use the MikTex distribution of         %%
+%% TeX for Windows) of TeX and LaTeX.  This is available from      %%
+%% http://www.miktex.org                                           %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% additional documentclass options:
+%  [doublespacing]
+%  [linenumbers]   - put the line numbers on margins
+
+%%% loading packages, author definitions
+
+\documentclass[twocolumn]{bmcart}% uncomment this for twocolumn layout and comment line below
+%\documentclass{bmcart}
+
+%%% Load packages
+%\usepackage{amsthm,amsmath}
+%\RequirePackage{natbib}
+%\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
+%\RequirePackage{hyperref}
+\usepackage[utf8]{inputenc} %unicode support
+%\usepackage[applemac]{inputenc} %applemac support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% EPN ADDED 
+% the lines in this section are NOT in BMC template
+% 
+% EPN: REMOVE graphicx BEFORE SUBMITTING WE ONLY NEED IT FOR FIG 1
+% WHICH GETS SUBMITTED SEPARATELY.
+\usepackage{graphicx} 
+%
+% For controlling whether tables and figures are inline or at end:
+% \drafttrue:  preprint. Figures and tables inline.
+% \draftfalse: submission version. Legends,tables at end. No figs included.
+% When ready to submit, uncomment %\draftfalse and comment \drafttrue
+\newif\ifdraft
+%\draftfalse
+\drafttrue
+% 
+% END OF EPN ADDED
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                             %%
+%%  If you wish to display your graphics for   %%
+%%  your own use using includegraphic or       %%
+%%  includegraphics, then comment out the      %%
+%%  following two lines of code.               %%
+%%  NB: These line *must* be included when     %%
+%%  submitting to BMC.                         %%
+%%  All figure files must be submitted as      %%
+%%  separate graphics through the BMC          %%
+%%  submission process, not included in the    %%
+%%  submitted article.                         %%
+%%                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% EPN: BEFORE SUBMITTING UNCOMMENT THESE LINES AS EXPLAINED IN COMMENT BOX ABOVE
+%\def\includegraphic{}
+%\def\includegraphics{}
+
+%%% Put your definitions there:
+\startlocaldefs
+\endlocaldefs
+
+
+%%% Begin ...
+\begin{document}
+
+%%% Start of article front matter
+\begin{frontmatter}
+
+\begin{fmbox}
+\dochead{Software}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the title of your article here     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{VADR: validation and annotation of virus sequence submissions to GenBank}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors here                   %%
+%%                                          %%
+%% Specify information, if available,       %%
+%% in the form:                             %%
+%%   <key>={<id1>,<id2>}                    %%
+%%   <key>=                                 %%
+%% Comment or delete the keys which are     %%
+%% not used. Repeat \author command as much %%
+%% as required.                             %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author[
+   addressref={aff1,aff2},
+   email={alejandro.schaffer@nih.gov}
+]{\inits{AAS}\fnm{Alejandro A} \snm{Sch\"{a}ffer}}
+\author[
+   addressref={aff2},
+   email={hatchere@ncbi.nlm.nih.gov}
+]{\inits{ELH}\fnm{Eneida L} \snm{Hatcher}}
+\author[
+   addressref={aff2},
+   email={yankie@ncbi.nlm.nih.gov}
+]{\inits{LY}\fnm{Linda} \snm{Yankie}}
+\author[
+   addressref={aff2,aff3},
+   email={larashonkwiler@gmail.com}
+]{\inits{LS}\fnm{Lara} \snm{Shonkwiler}}
+\author[
+   addressref={aff2},
+   email={jamesbr@ncbi.nlm.nih.gov}
+]{\inits{JRB}\fnm{J Rodney} \snm{Brister}}
+\author[
+   addressref={aff2},
+   email={mizrachi@ncbi.nlm.nih.gov}
+]{\inits{IKM}\fnm{Ilene} \snm{Karsch-Mizrachi}}
+\author[
+   addressref={aff2},                   % id's of addresses, e.g. {aff1,aff2}
+   corref={aff2},                       % id of corresponding address, if any
+   email={nawrocke@ncbi.nlm.nih.gov}   % email address
+]{\inits{EP}\fnm{Eric P} \snm{Nawrocki}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter the authors' addresses here        %%
+%%                                          %%
+%% Repeat \address commands as much as      %%
+%% required.                                %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\address[id=aff1]{%                           % unique id
+  \orgname{Cancer Data Science Laboratory},
+  \street{National Cancer Insitute},
+  \street{National Institutes of Health},
+  \city{Bethesda, MD},                        % city
+  \postcode{20892}                                % post or zip code
+  \cny{USA}                                   % country
+}
+\address[id=aff2]{%                           % unique id
+  \orgname{National Center for Biotechnology Information}, % university, etc
+  \street{National Library of Medicine},                     %
+  \street{National Institutes of Health},
+  \city{Bethesda, MD},                        % city
+  \postcode{20894}                                % post or zip code
+  \cny{USA}                                   % country
+}
+\address[id=aff3]{%                           % unique id
+  \orgname{Massachusetts Institute of Technology}
+%  \street{U.S. National Library of Medicine},                     %
+  %\postcode{}                                % post or zip code
+  \city{Cambridge, MA},                        % city
+  \cny{USA}                                   % country
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Enter short notes here                   %%
+%%                                          %%
+%% Short notes will be after addresses      %%
+%% on first page.                           %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\end{fmbox}% comment this for two column layout
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Abstract begins here                 %%
+%%                                          %%
+%% Please refer to the Instructions for     %%
+%% authors on http://www.biomedcentral.com  %%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstractbox}
+
+\begin{abstract} % abstract
+\parttitle{Background} %if any
+\input{abstract-background}
+
+\parttitle{Results} %if any
+\input{abstract-results}
+
+\parttitle{Conclusion} %if any
+\input{abstract-conclusion}
+
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The keywords begin here                  %%
+%%                                          %%
+%% Put each keyword in separate \kwd{}.     %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{keyword}
+\kwd{annotation}
+\kwd{virus}
+\kwd{alignment}
+\kwd{ncRNA}
+\end{keyword}
+
+% MSC classifications codes, if any
+%\begin{keyword}[class=AMS]
+%\kwd[Primary ]{}
+%\kwd{}
+%\kwd[; secondary ]{}
+%\end{keyword}
+
+\end{abstractbox}
+%
+\end{fmbox}% uncomment this for twocolumn layout
+
+\end{frontmatter}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% The Main Body begins here                %%
+%%                                          %%
+%% Please refer to the instructions for     %%
+%% authors on:                              %%
+%% http://www.biomedcentral.com/info/authors%%
+%% and include the section headings         %%
+%% accordingly for your article type.       %%
+%%                                          %%
+%% See the Results and Discussion section   %%
+%% for details on how to create sub-sections%%
+%%                                          %%
+%% use \cite{...} to cite references        %%
+%%  \cite{koon} and                         %%
+%%  \cite{oreg,khar,zvai,xjon,schn,pond}    %%
+%%  \nocite{smith,marg,hunn,advi,koha,mouse}%%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% start of article main body
+% <put your article body there>
+
+%%%%%%%%%%%%%%%%
+%% Background %%
+%%
+\section*{Background}
+\input{background}
+
+\section*{Implementation}
+\input{implementation}
+
+\section*{Results}
+\input{results}
+
+\section*{Discussion}
+\input{discussion}
+
+\section*{Conclusions}
+\input{conclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                          %%
+%% Backmatter begins here                   %%
+%%                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{backmatter}
+
+\section*{Competing interests}
+  The authors declare that they have no competing interests.
+
+\section*{Author's contributions}
+
+AAS wrote the protein validation module and EPN wrote the remainder of
+the code. ELH updated RefSeq annotation and developed test cases. LY
+tested the software on sequence submissions and developed test
+cases. LS wrote an early version of the classification module. JRB and
+IK-M helped develop the initial specifications for VADR and managed
+the work of ELH and LY, respectively. AAS and EPN conceived of and
+designed the software and wrote the paper. All authors helped in the
+development of the software and read and approved the final
+manuscript.
+
+\section*{Acknowledgements}
+
+We thank Est\'eban Finol for providing predicted RNA structures for
+the Dengue virus RefSeqs, Alex Kotliarov for incorporating VADR into
+the GenBank submission portal system, and Ron Patterson and his team
+for managing NCBI's computing resources. This research was supported
+by the Intramural Research Program of the NIH, National Library of
+Medicine and National Cancer Institute.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                  The Bibliography                       %%
+%%                                                         %%
+%%  Bmc_mathpys.bst  will be used to                       %%
+%%  create a .BBL file for submission.                     %%
+%%  After submission of the .TEX file,                     %%
+%%  you will be prompted to submit your .BBL file.         %%
+%%                                                         %%
+%%                                                         %%
+%%  Note that the displayed Bibliography will not          %%
+%%  necessarily be rendered by Latex exactly as specified  %%
+%%  in the online Instructions for Authors.                %%
+%%                                                         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% if your bibliography is in bibtex format, use those commands:
+
+\bibliographystyle{bmc-mathphys} % Style BST file (bmc-mathphys, vancouver, spbasic).
+\bibliography{local}      % Bibliography file (usually '*.bib' )
+% for author-year bibliography (bmc-mathphys or spbasic)
+% a) write to bib file (bmc-mathphys only)
+% @settings{label, options="nameyear"}
+% b) uncomment next line
+%\nocite{label}
+
+% or include bibliography directly:
+% \begin{thebibliography}
+% \bibitem{b1}
+% \end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Figures                       %%
+%%                               %%
+%% NB: this is for captions and  %%
+%% Titles. All graphics must be  %%
+%% submitted separately and NOT  %%
+%% included in the Tex document  %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% Do not use \listoffigures as most will included as separate files
+
+% EPN: BEFORE SUBMITTING MAKE THE FIGURES SECTION HERE WITH ONLY
+% CAPTIONS AND TITLES, REMOVE FIGURES FROM WITHIN DOC, INCLUDE FIGS AS
+% SEPARATE PDFS, WHICH ARE UPLOADED SEPARATELY IN THE SUBMISSION
+% SYSTEM
+\newpage
+
+\ifdraft
+\else
+\onecolumn
+
+\section*{Figures}
+
+\input{fig-vadr}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Tables                        %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Use of \listoftables is discouraged.
+%%
+\section*{Tables}
+
+\input{table-viruses}
+
+\input{table-software}
+
+\input{table-alertlist}
+
+\input{table-full-results}
+
+\input{table-full-alertcounts}
+
+\input{tables-results}
+\fi
+%\twocolumn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                               %%
+%% Additional Files              %%
+%%                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section*{Additional Files}
+%\subsection*{Additional file 1 --- Alert list table (only-table-alertlist.pdf)}
+%    Additional file descriptions text (including details of how to
+%    view the file, if it is in a non-standard format or the file extension).  This might
+%    refer to a multi-page table or a figure.
+
+% \subsection*{Additional file 2 --- Alert counts table (only-table-alertcounts.pdf)}
+%    Additional file descriptions text.
+
+\end{backmatter}
+\end{document}

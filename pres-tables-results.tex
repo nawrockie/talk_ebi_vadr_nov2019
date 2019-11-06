@@ -1,0 +1,44 @@
+\documentclass{bmcart}
+\usepackage{fullpage}
+\usepackage{nopageno}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{table}[t]
+\begin{tabular}{|l|r|r|r|}
+\hline
+         & VADR       & VAPiD     & VIGOR      \\
+ dataset & pass/fail  & pass/fail & pass/fail  \\ \hline
+       NC &  167/33 &  161/39 &   198/2 \\ 
+       DC &  189/11 &   196/4 &       - \\ 
+       NP &   191/9 &       - &   195/5 \\ 
+       DP &  163/37 &       - &       - \\ 
+\hline 
+\end{tabular}
+\end{table}
+\begin{table}[t]
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+         & Both       & Both       & VADR-pass  & VADR-fail  \\
+ dataset & pass       & fail       & VAPiD-fail & VAPiD-pass \\ \hline
+       NC &    137 &      9 &     30 &     24 \\ 
+       DC &    188 &      3 &      1 &      8 \\ 
+\hline 
+\end{tabular}
+\end{table}
+\begin{table}[t]
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+         & Both       & Both       & VADR-pass  & VADR-fail  \\
+ dataset & pass       & fail       & VIGOR-fail & VIGOR-pass \\ \hline
+       NC &    167 &      2 &      0 &     31 \\ 
+       NP &    191 &      5 &      0 &      4 \\ 
+\hline 
+\end{tabular}
+\end{table}
+
+\vfill
+
+\end{document}

@@ -1,0 +1,37 @@
+\documentclass{bmcart}
+\usepackage{fullpage}
+\usepackage{nopageno}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{table}[h!]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{code} & \textbf{S/F} & \textbf{error message} & \textbf{description}  \\
+\hline 
+\multicolumn{4}{|l|}{\textbf{Fatal alerts detected in the classification stage}} \\
+\hline 
+noannotn$^{*}$ & S & NO\_ANNOTATION                   & no significant similarity detected \\
+revcompl$^{*}$ & S & REVCOMPLEM                       & sequence appears to be reverse complemented \\
+incsbgrp       & S & INCORRECT\_SPECIFIED\_SUBGROUP   & score difference too large between best overall model and best specified \\
+               &   &                                  &  subgroup model \\
+incgroup       & S & INCORRECT\_SPECIFIED\_GROUP      & score difference too large between best overall model and best specified \\
+               &   &                                  &  group model \\
+\hline 
+\multicolumn{4}{|l|}{\textbf{Non-fatal alerts detected in the classification stage}} \\
+\hline 
+qstsbgrp       & S & QUESTIONABLE\_SPECIFIED\_SUBGROUP & best overall model is not from specified subgroup \\
+qstgroup       & S & QUESTIONABLE\_SPECIFIED\_GROUP   & best overall model is not from specified group \\
+indfclas       & S & INDEFINITE\_CLASSIFICATION       & low score difference between best overall model and second best model \\
+               &   &                                  &  (not in best model's subgroup) \\
+lowscore       & S & LOW\_SCORE                       & score to homology model below low threshold \\
+\hline 
+\end{tabular}
+\label{tbl:alertlist}
+\end{table}
+
+\clearpage
+
+\end{document}
