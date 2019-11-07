@@ -367,7 +367,7 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \textbf{VADR build step (\texttt{v-build.pl}) builds a homology model
   \\ (covariance model (CM)) of a RefSeq and stores feature information}
 
-\includegraphics[width=9in]{figs/ss-001477-minfo}
+\includegraphics[width=10.5in]{figs/ss-001477-minfo}
 
 \end{center}
 \vfill
@@ -496,64 +496,217 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Norovirus and Dengue virus test datasets}
+\textbf{VADR results on all Norovirus and Dengue sequences}
+
+\scriptsize
+\begin{tabular}{l|r|r|r|r|r}
+                        &         & length       &         &         & fraction \\
+ dataset                & \# seqs & range        & \# pass & \# fail & pass \\ \hline
+Norovirus complete (NC) & 1384    & 7380..7839   & 1157    & 227     & 0.836 \\
+Dengue complete (DC)    & 4580    & 10372..16254 & 4171    & 409     & 0.911 \\
+& & & & & \\
+Norovirus partial (NP)  & 32190   & 50..7376     & 29488   & 2702    & 0.916 \\
+Dengue partial  (DP)    & 20973   & 50..10370    & 17276   & 3697    & 0.824 \\
+\end{tabular}
+
 \end{center}
-
-TABLE:
-
-Norovirus-complete NC nseq minlen maxlen npass nfail fpass
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\includegraphics[width=10.5in]{figs/ss-alert-counts}
+\end{center}
 
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Alerts reported}
+\includegraphics[width=10.5in]{figs/ss-vapid-title}
 \end{center}
 
-From paper
+\small
+\begin{itemize}
+\item large reference database of nearly all complete genomes in
+  GenBank
+\item annotates each sequence based on best-match in reference
+  database using blastn
+\item designed for complete genomes
+\item identifies early and absent stop codons and frameshift indels
+\item simplifies submission by adding metadata expected by GenBank
+\end{itemize}
 
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{VAPiD and VIGOR viral annotation tools}
+\includegraphics[width=10.5in]{figs/ss-vigor-title}
 \end{center}
 
-Explanation of these two programs and citations or paper headings or
-something
+\small
+\begin{itemize}
+\item determines most appropriate database (e.g. Norovirus)
+  and annotates based on comparison of all proteins and mature
+  peptides in that database
+\item no Dengue database
+\item identifies early and absent stop codons and frameshift indels
+\end{itemize}
 
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{VAPiD and VIGOR viral annotation tools}
-\end{center}
+\textbf{Summary of VAPiD, VIGOR and VADR on 200 randomly chosen seqs}
 
-Explanation of these two programs and citations or paper headings or
-something
+\begin{tabular}{|l|r|r|r|}
+\hline
+         & VADR       & VAPiD     & VIGOR      \\
+ dataset & pass/fail  & pass/fail & pass/fail  \\ \hline
+       NC &  167/33 &  161/39 &   198/2 \\ 
+       DC &  189/11 &   196/4 &       - \\ 
+       NP &   191/9 &       - &   195/5 \\ 
+       DP &  163/37 &       - &       - \\ 
+\hline 
+\end{tabular}
+\end{center}
 
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Comparison of VAPiD, VIGOR and VADR}
-\end{center}
+\textbf{Comparison of VAPiD and VADR}
 
-Tables 6, 7, 8 from paper
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+          & Both       & Both       & VADR-pass  & VADR-fail  \\
+ dataset  & pass       & fail       & VAPiD-fail & VAPiD-pass \\ \hline
+       NC &        137 &          9 &         30 &     24 \\ 
+       DC &        188 &          3 &          1 &      8 \\ 
+\hline 
+\end{tabular}
+
+\end{center}
 
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{EXAMPLES OF VADR FAILS THAT PASSED VAPiD/VIGOR}
+\textbf{Comparison of VAPiD and VADR}
+
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+          & Both       & Both       & VADR-pass  & VADR-fail  \\
+ dataset  & pass       & fail       & VAPiD-fail & VAPiD-pass \\ \hline
+       NC &        137 &          9 &         30 &     24 \\ 
+       DC &        188 &          3 &          1 &      8 \\ 
+\hline 
+\end{tabular}
+
+\small
+\begin{itemize}
+\item 12 that fail both:
+  \begin{itemize}
+  \item 9 have an internal stop (SEQ FEAT.InternalStop) or another
+    CDS translation problem (SEQ FEAT.CdsTransFail)
+  \item one has a start codon problem (SEQ FEAT.StartCodon)
+  \item one is reverse complemented
+  \item one fails because no reference is found
+  \end{itemize}
+\item 31 that fail only VAPiD are:
+  \begin{itemize}
+  \item either 5’ truncated in the first CDS, 3’ truncated in the
+    final CDS, or both (at least one of SEQ FEAT.NoStop or SEQ FEAT.CdTransFail)
+  \item 
+    otherwise valid according to the VADR and VIGOR results
+  \end{itemize}
+\item \textcolor{red}{Conclusion: VADR finds all problems that VAPiD finds that should
+  be caught.}
+\end{itemize}
 \end{center}
 
-Tables 6, 7, 8 from paper
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Comparison of VIGOR and VADR}
+
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+         & Both       & Both       & VADR-pass  & VADR-fail  \\
+ dataset & pass       & fail       & VIGOR-fail & VIGOR-pass \\ \hline
+       NC &    167 &      2 &      0 &     31 \\ 
+       NP &    191 &      5 &      0 &      4 \\ 
+\hline 
+\end{tabular}
+
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Comparison of VIGOR and VADR}
+
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+         & Both       & Both       & VADR-pass  & VADR-fail  \\
+ dataset & pass       & fail       & VIGOR-fail & VIGOR-pass \\ \hline
+      NC &        167 &          2 &          0 &     31 \\ 
+      NP &        191 &          5 &          0 &      4 \\ 
+\hline 
+\end{tabular}
+
+\small
+\begin{itemize}
+\item 7 that fail both:
+  \begin{itemize}
+  \item 3 have premature stops
+  \item 2 are reverse complemented
+  \item one has a frameshift 
+  \item one fails because no similar reference is found
+  \end{itemize}
+\item \textcolor{red}{Conclusion: VADR finds all problems that VAPiD finds that should
+  be caught.}
+\end{itemize}
+\end{center}
+
+\vfill
+\end{slide}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{35 sequences in NC, DC, and NP fail only VADR}
+
+\small
+\begin{itemize}
+\item \textcolor{red}{These all have issues indexers want to manually review:}
+\begin{itemize}
+\item 16 sequences with early stops compared to closest RefSeqs %(\emph{cdsstopn})
+\item 12 sequences for which BLASTX alignment does not extend close
+  enough to alignment-based prediction %(\emph{indf5pst}, \emph{indf3pst})
+\item 10 sequences with low similarity to RefSeq at 5' or 3' end of
+  sequence or a feature %(lowsim5f, lowsim3f, or lowsim3s alerts)
+\item 7 sequences where 5' or 3' boundary is a gap or not aligned with
+  sufficient confidence (high enough posterior probability)
+  %(indf5loc, indf5gap, or indf3loc alerts)
+\item 5 sequences that are expected to be Norovirus but are really Sapovirus
+  %(incgroup alerts)
+\item 5 sequences with too large of an insertion/deletion in the
+  BLASTX alignment %(insertnp or deletinp alerts)
+\item 1 sequence not recognized by any of the \emph{Caliciviridae} or
+  \emph{Flaviviridae} models (a Salivirus from \emph{Picornaviridae}
+  family) %(noannotn alert)
+\end{itemize}
+\end{itemize}
+\end{center}
 
 \vfill
 \end{slide}
@@ -624,6 +777,8 @@ Eneida Hatcher                   & & \\
 Linda Yankie                     & & \\
 Alex Kotliarov                   & & \\
 Susan Schafer                    & & \\
+Lara Shonkwiler                  & & \\
+Sophia Hu                        & & \\
 \end{tabular}
 
 \includegraphics[width=2.5in]{figs/NIH_NLM_ABRV_2C_4-white}
