@@ -83,50 +83,68 @@ National Institutes of Health\\
 \medskip
 
 \begin{center}
-\begin{tabular}{l||r|r||r||l}
-                                 &    2018  & total     &         &           \\
- marker gene/                    &  GenBank & GenBank   &  TLS\footnote{TLS: Targeted Locus Study, currently only 16S submissions with $>=$ 2500 seqs}      & analysis  \\
- sequence type                   &  \# seqs & \# seqs   & \# seqs & tool \\ \hline
-& & & \\                    
+\begin{tabular}{lrr}
+                                 &    2018  & total     \\
+ marker gene/                    &  GenBank & GenBank   \\
+ sequence type                   &  \# seqs & \# seqs   \\ \hline
+& & \\
 %\textcolor{red}{16S rRNA}        & \textcolor{red}{333,121}  & \textcolor{red}{8,015,297} & \textcolor{red}{18,262,402} & \textcolor{red}{BLAST}\footnote{TLS submissions now processed with Ribosensor} \\
 %16S rRNA                        & 333,121  & 8,015,297 & 18,262,402 & BLAST$^{*}$ \\
-16S rRNA                        & 333,121  & 8,015,297 & 18,262,402 & BLAST \\
-& & & \\                    
- 23S rRNA                        & 74,287  &   275,014  & 2,140      & BLAST \\
-& & & \\
- ITS1                            & 27,279  &   359,380  & 13,294     & BLAST \\
-& & & \\                    
- ITS2                            & 24,144  &   184,515  &      0     & BLAST \\
-& & & \\                    
- ITS1+ITS2                       & 26,734  &   445,721  & 25,725     & BLAST \\
-& & & \\                    
- Influenza A                     & 74,868  &   665,464  &      0     & FLAN \\
+16S rRNA                        & 333,121  & 8,015,297 \\
+& & \\                    
+ 23S rRNA                        & 74,287  &   275,014  \\
+& & \\
+ ITS1                            & 27,279  &   359,380  \\
+& & \\                    
+ ITS2                            & 24,144  &   184,515  \\
+& & \\                    
+ ITS1+ITS2                       & 26,734  &   445,721  \\
+& & \\                    
+ COX1                            &      ?  &         ?  \\
+& & \\                    
+ Influenza                       & 74,868  &   665,464  \\
 \end{tabular}
 \end{center}
 \vfill
-\tiny \flushleft{$\dagger$ TLS: Targeted Locus Study, currently only 16S submissions with $>=$ 2500 seqs, handled by Anji Johnston}
+%\tiny \flushleft{$\dagger$ TLS: Targeted Locus Study, currently only 16S submissions with $>=$ 2500 seqs, handled by Anji Johnston}
 %\tiny \flushleft{$\ddagger$ TLS submissions now processed with ribosensor}
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{NCBI GenBank Indexers have large backlogs}
+\textbf{Manual NCBI GenBank Indexing does not scale}
 
+\includegraphics[width=7in]{figs/submission-schematic-1}
+
+\vfill
+\end{center}
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{NCBI GenBank Indexers use BLAST}
+
+\includegraphics[width=7in]{figs/submission-schematic-2}
+
+\small
 \begin{itemize}
-\item Indexer: evaluate a sequence submission and associated metadata
-  and either:
-  \begin{itemize} 
-    \item accept for deposition to GenBank
-    \item communicate with submitter to resolve \emph{problems}
-  \end{itemize}
+\item Foosh pipelines exist for 16S, 23S, ITS (BLAST-based) and
+    Influenza (FLAN)
+\end{itemize}
 
-\item \textbf{Goal: automate as much as possible}
-  \begin{itemize}
-  \item Evaluate with an annotation tool and submissions with zero
-    errors automatically enter database
-    (``foosh'')
-  \end{itemize}
-  \item Foosh pipelines exist for 16S, 23S, ITS (BLAST-based) and
+\vfill
+\end{center}
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{NCBI GenBank Indexers use BLAST}
+
+\includegraphics[width=7in]{figs/submission-schematic-3}
+
+\small
+\begin{itemize}
+\item Foosh pipelines exist for 16S, 23S, ITS (BLAST-based) and
     Influenza (FLAN)
 \end{itemize}
 
@@ -540,3 +558,47 @@ Susan Schafer                    & & \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Sequence submissions are handled by expert NCBI indexers}
+\end{center}
+
+\small
+\begin{itemize}
+\item Indexers check submissions for quality
+\item Many submissions are of \emph{marker genes}, used to
+  characterize environments (microbiome, soil), which are
+  automatically analyzed by BLAST or specialized tools.
+%\item Submissions with zero errors automatically enter database
+%  (``foosh'')
+%\item Submissions with errors can be corrected by submitter or are manually reviewed by an indexer
+\end{itemize}
+
+\medskip
+
+\begin{center}
+\begin{tabular}{l||r|r||r||l}
+                                 &    2018  & total     &         &           \\
+ marker gene/                    &  GenBank & GenBank   &  TLS\footnote{TLS: Targeted Locus Study, currently only 16S submissions with $>=$ 2500 seqs}      & analysis  \\
+ sequence type                   &  \# seqs & \# seqs   & \# seqs & tool \\ \hline
+& & & \\                    
+%\textcolor{red}{16S rRNA}        & \textcolor{red}{333,121}  & \textcolor{red}{8,015,297} & \textcolor{red}{18,262,402} & \textcolor{red}{BLAST}\footnote{TLS submissions now processed with Ribosensor} \\
+%16S rRNA                        & 333,121  & 8,015,297 & 18,262,402 & BLAST$^{*}$ \\
+16S rRNA                        & 333,121  & 8,015,297 & 18,262,402 & BLAST \\
+& & & \\                    
+ 23S rRNA                        & 74,287  &   275,014  & 2,140      & BLAST \\
+& & & \\
+ ITS1                            & 27,279  &   359,380  & 13,294     & BLAST \\
+& & & \\                    
+ ITS2                            & 24,144  &   184,515  &      0     & BLAST \\
+& & & \\                    
+ ITS1+ITS2                       & 26,734  &   445,721  & 25,725     & BLAST \\
+& & & \\                    
+ Influenza A                     & 74,868  &   665,464  &      0     & FLAN \\
+\end{tabular}
+\end{center}
+\vfill
+\tiny \flushleft{$\dagger$ TLS: Targeted Locus Study, currently only 16S submissions with $>=$ 2500 seqs, handled by Anji Johnston}
+%\tiny \flushleft{$\ddagger$ TLS submissions now processed with ribosensor}
+\end{slide}
