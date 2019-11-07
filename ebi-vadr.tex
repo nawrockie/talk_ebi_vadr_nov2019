@@ -117,7 +117,7 @@ National Institutes of Health\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{Manual NCBI GenBank Indexing does not scale}
+\textbf{Manual NCBI GenBank indexing does not scale}
 
 \includegraphics[width=7in]{figs/submission-schematic-1}
 
@@ -200,9 +200,6 @@ West Nile virus           &       21,563 & \emph{Flaviviridae}     \\ % 11082
 Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \end{tabular}
 
-
-
-
 \vfill
 
 \end{center}
@@ -224,7 +221,7 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
     annotation. 
 \end{itemize}
 \item Systematic and complete annotation would benefit viral
-  researchers and facilitate comparative analyses
+  researchers and facilitate \\ comparative analyses
 \end{itemize}
 
 \vfill
@@ -232,16 +229,40 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-VADR (Viral Annotation DefineR) uses RefSeqs to validate and
-annotate viral sequences
-
-\includegraphics[width=7in]{figs/vadr}
+\textbf{Viral sequences are not systematically or thoroughly annotated}
 \end{center}
 
 \small
 \begin{itemize}
-  \item We chose Norovirus and Dengue virus sequences for the pilot
-    project.
+\item Examples of incomplete annotation: 
+  \begin{itemize}
+  \item Rfam families are rarely to never annotated in viral genomes
+    (roughly 200 families)
+  \item Less than 2\% of Norovirus sequences have mature peptide
+    annotation. 
+\end{itemize}
+\item Systematic and complete annotation would benefit viral
+  researchers and facilitate \\ comparative analyses
+\end{itemize}
+
+\begin{center}\includegraphics[width=7in]{figs/submission-schematic-4}\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+VADR (Viral Annotation DefineR) \\ uses RefSeqs to validate and
+annotate viral sequences
+
+\includegraphics[width=7in]{figs/submission-schematic-5}
+\end{center}
+
+\small
+\begin{itemize}
+  \item Unexpected characteristics are reported as \emph{alerts}
+    (e.g. early stop codon)
+  \item Some alerts are \emph{fatal} and cause sequences to \emph{fail}.
 \end{itemize}
 
 %\small
@@ -260,48 +281,106 @@ annotate viral sequences
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{VADR-based sequence validation: unexpected characteristics are identified and reported 
-  as \emph{alerts}}
+
+\textbf{Norovirus and Dengue virus chosen as first viruses for VADR testing}
+
+\tiny
+\begin{tabular}{lrl}
+species                   &       \#seqs & family           \\ \hline
+%                                                              % taxids
+& & \\
+HIV-1                     &      850,115 & \emph{Retroviridae}     \\ % 11676
+& & \\
+Influenza A virus         &      684,026 & \emph{Orthomyxoviridae} \\ % 11320
+& & \\
+Hepacivirus C             &      244,533 & \emph{Flaviviridae}     \\ % 11103
+& & \\
+Hepatitis B virus         &      114,306 & \emph{Hepadnaviridae}   \\ % 10407
+& & \\
+Influenza B virus         &      100,373 & \emph{Orthomyxoviridae} \\ % 11520
+& & \\
+Rotavirus A               &       73,375 & \emph{Reoviridae}       \\ % 28875
+& & \\
+SIV                       &       44,374 & \emph{Retroviridae}     \\ % 11723
+& & \\
+\textcolor{red}{Norovirus (Norwalk virus)} &       \textcolor{red}{40,925} & \textcolor{red}{\emph{Caliciviridae}}    \\ % 11983
+& & \\
+Enterovirus A             &       31,478 & \emph{Picornaviridae}   \\ % 138948
+& & \\
+PRRSV                     &       29,081 & \emph{Arteriviridae}    \\ % 28344
+& & \\
+%Dengue virus              &       28,564 & \emph{Flaviviridae}     \\ % 12637
+\textcolor{red}{Dengue virus}              &       \textcolor{red}{28,564} & \textcolor{red}{\emph{Flaviviridae}}     \\ % 12637
+& & \\
+Human orthopneumovirus    &       24,384 & \emph{Pneumoviridae}    \\ % 11250 (RSV) 
+& & \\
+Enterovirus B             &       23,865 & \emph{Picornaviridae}   \\ % 138949
+& & \\
+Rabies lyssavirus         &       23,771 & \emph{Rhabdoviridae}    \\ % 11292
+& & \\
+West Nile virus           &       21,563 & \emph{Flaviviridae}     \\ % 11082
+& & \\
+Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
+\end{tabular}
+
+\vfill
+
 \end{center}
+\end{slide}
 
-\scriptsize
-\begin{itemize}
-\item Examples of alerts: early stop codon, dissimilar region
-\item Some alerts are \emph{fatal}
-\item Sequences with 1 or more fatal alerts \emph{fail}
-\item Sequences with 0 fatal alerts \emph{pass} and are cleared for
-  entry into GenBank (foosh).
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{VADR build step (\texttt{v-build.pl}) builds a homology model
+  \\ (covariance model (CM)) of a RefSeq and stores feature information}
 
+\includegraphics[width=6in]{figs/ss-001477-top}
+
+\end{center}
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{VADR build step (\texttt{v-build.pl}) builds a homology model
+  \\ (covariance model (CM)) of a RefSeq and stores feature information}
+
+\includegraphics[width=6in]{figs/ss-001477-mid}
+
+\end{center}
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{VADR build step (\texttt{v-build.pl}) builds a homology model
+  \\ (covariance model (CM)) of a RefSeq and stores feature information}
+
+\includegraphics[width=6in]{figs/ss-001477-bot}
+
+\end{center}
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{VADR build step (\texttt{v-build.pl}) builds a homology model
+  \\ (covariance model (CM)) of a RefSeq and stores feature information}
+
+\includegraphics[width=9in]{figs/ss-001477-minfo}
+
+\end{center}
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
 
-\includegraphics[width=6in]{figs/ss-001477-top}
-\includegraphics[width=6in]{figs/ss-001477-mid}
+\includegraphics[width=8in]{figs/vadr}
 
 \end{center}
+\vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-
-\includegraphics[width=6in]{figs/ss-001477-mid}
-\includegraphics[width=6in]{figs/ss-001477-bot}
-
-\end{center}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-
-\includegraphics[width=9in]{figs/ss-001477-minfo}
-
-\end{center}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
@@ -322,7 +401,7 @@ annotate viral sequences
   the model) and feature annotation is mapped from model to sequence
 
 \item[Protein validation]: Predicted CDS features in each sequence are
-  compared against proteins from Reference model using BLASTX
+  compared against proteins from best-matching model using BLASTX
 \end{description}
 
 \emph{Different types of alerts are identified and reported at each stage}
@@ -342,12 +421,12 @@ annotate viral sequences
 \end{description}
 
 \begin{itemize} 
-\item First three stages of the HMMER3 pipeline are used to
+\item First 3 stages (only) of the HMMER3 pipeline are used to
   determine score quickly using a ``profile'' HMM of each model
   (single RefSeq).
 \end{itemize}
 
-\includegraphics[width=6in]{figs/ss-class-alert-list}
+\includegraphics[width=10in]{figs/ss-class-alert-list}
 
 \end{center}
 \vfill
@@ -355,8 +434,6 @@ annotate viral sequences
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{\texttt{v-annotate.pl}: coverage determination stage}
-\end{center}
 
 \begin{description}
 \item[Coverage determination]: Each sequence is compared against
@@ -364,57 +441,58 @@ annotate viral sequences
 \end{description}
 
 \begin{itemize} 
-\item Full HMMER3 pipeline is used using best-matching model to 
-  determine hit boundaries. Allows additional types of ``problems'' to
-  be detected. 
+\item Full HMMER3 pipeline is used using best-matching model to
+  determine hit boundaries. Allows additional alert types to
+  be detected.
 \end{itemize}
 
-Possible alert types:
+\includegraphics[width=10in]{figs/ss-coverage-alert-list}
 
+\end{center}
 \vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{\texttt{v-annotate.pl}: alignment stage}
-\end{center}
 
 \begin{description}
 \item[Alignment]: Each sequence is aligned to its best-matching
   model (globally with respect to sequence, locally with respect to
-  the model) and feature annotation is mapped from model to sequence.
+  the model) and feature annotation is mapped from model to sequence
 \end{description}
 
 \begin{itemize} 
-\item Full CM alignment is used (global with respect to sequence) to get
-  accurate alignments (including at endpoints), along with posterior
-  probabilities of aligned nucleotides.
+\item CM instead of HMMER3 HMM alignment is used to improve accuracy
+  at at endpoints and allow structure information (when available). 
+  Output includes posterior probabilities of aligned nucleotides.
 \end{itemize}
 
-Possible alert types:
+\includegraphics[width=10in]{figs/ss-alignment-alert-list}
 
+\end{center}
 \vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{\texttt{v-annotate.pl}: protein validation stage}
-\end{center}
 
 \begin{description}
 \item[Protein validation]: Predicted CDS features in each sequence are
-  compared against proteins from Reference model using BLASTX
+  compared against proteins from best-matching model using BLASTX
 \end{description}
 
 \begin{itemize} 
 \item Because other stages are nucleotide-based, frameshift mutations
-  are not detected as problematic, but they should prevent fooshing.
+  are not detected until this stage. Also maximum lengths for indels
+  are enforced. 
 \end{itemize}
 
-Possible alert types:
+\includegraphics[width=10in]{figs/ss-protein-alert-list}
 
+\end{center}
 \vfill
 \end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
