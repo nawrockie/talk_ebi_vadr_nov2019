@@ -61,3 +61,27 @@ Outline:
   o alignments
   o profile-based protein validation replacing blastx
   o HMMER4: memory efficient alignment
+
+
+==================================
+EPN, Thu Nov  7 14:48:18 2019
+
+Following from 00NOTES.txt in my jan 2019 job talk for nlm.
+
+<[(stats-on-cox1)]> pwd
+/panfs/pan1/infernal/notebook/19_1103_talk_ebi_vadr/stats-on-cox1
+
+<[(stats-on-cox1)]> perl make-qsub-cox1.pl > qsub-cox1.sh
+<[(stats-on-cox1)]> sh qsub-cox1.sh 
+<[(stats-on-cox1)]> cat COX1*all*all*ntlist > all.COX1.ntlist
+<[(stats-on-cox1)]> cat COX1*2018*all*ntlist > all.COX1.2018.ntlist
+
+That didn't really work, at least the 2018 returned weird
+errors. Instead of figuring out why I decided to just use Entrez;
+
+Searched for 'cox1' (that's it) in Nucleotide:
+1,349,957 hits
+
+And in 2018:
+Searced for 'cox1 AND 2018/01/01:2018/12/31 [Publication Date]'
+35,517
