@@ -86,6 +86,91 @@ And in 2018:
 Searced for 'cox1 AND 2018/01/01:2018/12/31 [Publication Date]'
 35,517
 
+===================================
+EPN, Fri Nov  8 06:24:07 2019
+
+Trying to count how many Zika sequences have mature peptide
+information for a stat in my talk.
+
+First I need to get a list of all Zika seqs.
+Then I have a script in the paper supp tarball that counts number with
+mature peptides.
+
+Getting list of all zika seqs:
+<[(stats-on-zika)]> pwd
+/panfs/pan1/infernal/notebook/19_1103_talk_ebi_vadr/stats-on-zika
+<[(stats-on-zika)]> cp $INF/notebook/19_0103_talk_nlm_interview/stats-on-popular-genes/make-qsub-flu.pl ./
+<[(stats-on-zika)]> cp make-qsub-flu.pl make-qsub-zika.pl
+<[(stats-on-zika)]> cat zika-query.sh
+esearch -db nuccore -query "txid64320[Organism:exp]" | efetch -format acc > zika.all.ntlist
+# this returns 1719 seqs
+# an independent Entrez search for "zika virus" in nucleotide returns 2959 but if 
+# you look at 'top organisms' only 1717 are in Zika Virus (788 are synthetic construct)
+<[(stats-on-zika)]> sh zika-query.sh
+<[(stats-on-zika)]> wc -l zika.all.ntlist 
+1719 zika.all.ntlist
+
+How many of these have mature peptides annotated?
+<[(stats-on-zika)]> cp $INF/notebook/19_1003_vadr_mscript_tests3/m-vadr/vadr-1.0-paper-supplementary-material/scripts/genbank-fetch-cds-and-mp.sh .
+<[(stats-on-zika)]> cp $INF/notebook/19_1003_vadr_mscript_tests3/m-vadr/vadr-1.0-paper-supplementary-material/scripts/genbank-count-cds-and-mp.sh .
+<[(stats-on-zika)]> cp $INF/notebook/19_1003_vadr_mscript_tests3/m-vadr/vadr-1.0-paper-supplementary-material/scripts/acclist2mp-and-cds.pl .
+<[(stats-on-zika)]> sh count-zika-cds-and-mp.sh
+num seqs with >= 1 CDS annotated: 1442
+num seqs with >= 1 mat_peptide annotated: 370
+
+1442/1719 = 83.886%
+370/1442 = 25.6% 
+
+
+----------------
+Counting RNAs:
+
+Testing on NC_001477 which I know has RNAs
+<[(stats-on-zika)]> esearch -db nuccore -query \"NC_001477.1\" | efetch -format gpc | xtract -insd ncRNA INSDFeature_location
+NC_001477.1	10320..10735
+NC_001477.1	10393..10735
+NC_001477.1	10463..10735
+NC_001477.1	10551..10735
+<[(stats-on-zika)]> esearch -db nuccore -query \"NC_001477.1\" | efetch -format gpc | xtract -insd stem_loop INSDFeature_location
+NC_001477.1	2..69
+NC_001477.1	79..93
+NC_001477.1	114..130
+NC_001477.1	10324..10389
+NC_001477.1	10397..10458
+NC_001477.1	10467..10549
+NC_001477.1	10551..10633
+NC_001477.1	10643..10656
+NC_001477.1	10657..10735
+
+--------------
+Now doing the same for all viruses in my table.
+
+<[(stats-on-top-viruses)]> pwd
+/panfs/pan1/infernal/notebook/19_1103_talk_ebi_vadr/stats-on-top-viruses
+<[(stats-on-top-viruses)]> perl make-qsub.pl > run.sh
+
+This runs each virus in serial:
+<[(stats-on-top-viruses)]> sh run.sh
+
+Now pulling out cds, mp, rna, stem_loop feature counts:
+<[(stats-on-top-viruses)]> pwd
+/panfs/pan1/infernal/notebook/19_1103_talk_ebi_vadr/stats-on-top-viruses
+<[(stats-on-top-viruses)]> cat count-all-features.sh
+for f in CDS mat_peptide stem_loop ncRNA; do 
+    for v in HIV-1 flu-A HCV HepB flu-B rotavirus SIV norovirus entero-A PRRSV dengue RSV entero-B rabies westnile measles; do 
+        perl ./acclist2feature-type.pl $v.all.ntlist $f > $v.$f.all.out
+        perl ./acclist2feature-type.pl $v.2018.ntlist $f > $v.$f.2018.out
+        echo -n "num $v all seqs with >= 1 $f annotated: "
+        cat $v.$f.all.out | awk '{ print $1 }' | sort | uniq | wc -l
+        echo -n "num $v 2018 seqs with >= 1 $f annotated: "
+        cat $v.$f.2018.out | awk '{ print $1 }' | sort | uniq | wc -l
+    done
+done
+
+    
+
+<[(stats-on-top-viruses)]> sh count-all-features.sh
+
 -------------------------------
 Ideas:
 
