@@ -85,3 +85,10 @@ Searched for 'cox1' (that's it) in Nucleotide:
 And in 2018:
 Searced for 'cox1 AND 2018/01/01:2018/12/31 [Publication Date]'
 35,517
+
+-------------------------------
+Ideas:
+
+- add posterior probability example, (at feature endpoint)?
+- add diagram showing software used by VADR:
+  infernal, hmmer, easel, bio-easel, blastx, sequip
