@@ -220,11 +220,34 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \center{\includegraphics[width=8in]{figs/zika-genome-norna}}
 
 \begin{itemize}
-\item Zika's genome encodes a single polyprotein that is cleaved into 14 mature peptides
-\item Zika RefSeq annotation (NC\_012532) includes mature peptide annotation.
-\item Less than N\% of Zika GenBank sequences have mature peptide annotation.
-\item Less than 2\% of Norovirus sequences have mature peptide annotation.
+\item Zika's genome encodes a single polyprotein that is cleaved into 14 mature peptides.
+\item Zika RefSeq annotation (NC\_012532) includes CDS and mature peptide annotation.
+\end{itemize}
+
+\vfill
+\tiny \flushleft{figure from ViralZone, Hulo et al. NAR. 2011 Jan;39:D576-82}
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Viral sequences are not systematically or thoroughly annotated}
+\end{center}
+\medskip
+
+\small
+\begin{itemize}
+\item Genome annotation of the Zika virus:
+\end{itemize}  
+
+\center{\includegraphics[width=8in]{figs/zika-genome-norna}}
+
+\begin{itemize}
+\item Zika's genome encodes a single polyprotein that is cleaved into 14 mature peptides.
+\item Zika RefSeq annotation (NC\_012532) includes CDS and mature peptide annotation.
+\item About 84\% of Zika GenBank sequences have CDS annotation.
+\item Less than 25\% of Zika GenBank sequences have mature peptide annotation.
 \item Less than 7\% of Dengue virus sequences have mature peptide annotation.
+\item Less than 2\% of Norovirus sequences have mature peptide annotation.
 \end{itemize}
 
 \vfill
@@ -235,50 +258,19 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \begin{center}
 \textbf{Viral sequences are not systematically or thoroughly annotated}
 \end{center}
+\medskip
 
 \small
 \begin{itemize}
-\item Examples of incomplete annotation: 
-  \begin{itemize}
-  \item Rfam families are rarely to never annotated in viral genomes
-    (roughly 200 families)
-  \item Less than 2\% of Norovirus sequences have mature peptide
-    annotation. 
-\end{itemize}
-\item Systematic and complete annotation would benefit viral
-  researchers and facilitate \\ comparative analyses
-\end{itemize}
-
-\vfill
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\small
-\begin{center}
-\textbf{Viral sequences are not systematically or thoroughly annotated}
-\end{center}
-
-\small
-\begin{itemize}
-\item Examples of incomplete annotation: 
-  \begin{itemize}
-  \item Rfam families are rarely to never annotated in viral genomes
-    (roughly 200 families)
-  \item Less than 2\% of Norovirus sequences have mature peptide
-    annotation. 
-\end{itemize}
-\item Systematic and complete annotation would benefit viral
-  researchers and facilitate \\ comparative analyses
-\end{itemize}
+\item Genome annotation of the Zika virus:
+\end{itemize}  
 
 \center{\includegraphics[width=8in]{figs/zika-genome-yesrna}}
 
 \begin{itemize}
-%\item Single polyprotein that is cleaved into 14 mature peptides
-%\item Annotation enabled by existing knowledge of homologous proteins
-%  in related flaviviruses
 \item RNA structures in the 3' UTR halt host exonuclease leading to an
   accumulation of 300-500nt subgenomic flavivirus RNAs (sfRNAs) are
-  related to pathogenicity
+  related to pathogenicity.
 \end{itemize}
 
 \normalsize
@@ -288,8 +280,6 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \vfill
 \tiny \flushleft{figure from ViralZone, Hulo et al. NAR. 2011 Jan;39:D576-82}
 \end{slide}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
@@ -298,16 +288,23 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 
 \small
 \begin{itemize}
-\item Examples of incomplete annotation: 
-  \begin{itemize}
-  \item Rfam families are rarely to never annotated in viral genomes
-    (roughly 200 families)
-  \item Less than 2\% of Norovirus sequences have mature peptide
-    annotation. 
+\item CDS are not always annotated
+\item Mature peptides are rarely annotated
+\item Rfam families are rarely to never annotated in viral genomes
+  (roughly 200 families)
 \end{itemize}
-\item Systematic and complete annotation would benefit viral
-  researchers and facilitate \\ comparative analyses
-\end{itemize}
+
+\normalsize
+\center{\textbf{\emph{Systematic and complete annotation would \\ benefit viral
+  researchers (facilitate comparative analyses)}}}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Annotation and validation should be coupled}
+\end{center}
 
 \begin{center}\includegraphics[width=7in]{figs/submission-schematic-4}\end{center}
 
@@ -316,8 +313,8 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-VADR (Viral Annotation DefineR) \\ uses RefSeqs to validate and
-annotate viral sequences
+\textbf{VADR (Viral Annotation DefineR) \\ uses RefSeqs to validate and
+annotate viral sequences}
 
 \includegraphics[width=7in]{figs/submission-schematic-5}
 \end{center}
@@ -326,7 +323,7 @@ annotate viral sequences
 \begin{itemize}
   \item Unexpected characteristics are reported as \emph{alerts}
     (e.g. early stop codon)
-  \item Some alerts are \emph{fatal} and cause sequences to \emph{fail}.
+  \item Some alerts are \emph{fatal} and cause sequences to \emph{fail}
 \end{itemize}
 
 %\small
@@ -440,9 +437,45 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \begin{slide}
 \begin{center}
 
-\includegraphics[width=8in]{figs/vadr}
+\includegraphics[width=10in]{figs/vadr}
 
 \end{center}
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\normalsize
+\textbf{VADR 1.0 model library}
+
+% /panfs/pan1/infernal/notebook/19_0520_vadr_build_from_ft/00LOG.txt
+% 41 of the '197' models are Caliciviridae
+% 156 of the '197' models are Flaviviridae
+% But we purposefully omitted 3 new Norovirus from Flaviviridae, so
+% it's 41 and 153.
+
+\small
+\begin{itemize}
+\item 38 \emph{Caliciviridae} models:
+  \begin{itemize}
+  \item \textcolor{red}{9 Norovirus models}
+  \item 7 Sapovirus models
+  \item 4 Vesivirus models
+    %  \item 18 other Caliciviruses
+  \end{itemize}
+\item 156 \emph{Flaviviridae} models:
+  \begin{itemize}
+  \item 10 Pegiivirus models
+  \item \textcolor{red}{8 HCV models}
+  \item 7 Pestivirus models
+  \item \textcolor{red}{4 Dengue virus models}
+  \item 2 West Nile virus models
+  \item 2 Zika virus models
+  \end{itemize}
+\end{itemize}
+
+\end{center}
+
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -451,22 +484,17 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \textbf{\texttt{v-annotate.pl} annotates each sequence using its
   best-matching model}
 
+\begin{itemize}
+\item For each sequence $S$:
 \small
-\begin{description}
-\item[Classification]: Each sequence is compared against all models 
-  to determine its best-matching model to determine score only (no
-  hit boundaries)
-
-\item[Coverage determination]: Each sequence is compared against
-  its best matching model again to obtain hit boundaries
-
-\item[Alignment]: Each sequence is aligned to its best-matching
-  model (globally with respect to sequence, locally with respect to
-  the model) and feature annotation is mapped from model to sequence
-
-\item[Protein validation]: Predicted CDS features in each sequence are
-  compared against proteins from best-matching model using BLASTX
-\end{description}
+\begin{enumerate}
+\item \textbf{Classification}: compare $S$ to all models to find best matching model $M$
+\item \textbf{Coverage determination}: search $M$ against $S$ to find 'hits'
+\item \textbf{Alignment}: align $S$ to $M$ and map features from $M$ to $S$
+\item \textbf{Protein validation}: compare predicted CDS in $S$ to proteins
+  from $M$ using BLASTX
+\end{enumerate}
+\end{itemize}
 
 \emph{Different types of alerts are identified and reported at each stage}
 
@@ -490,7 +518,7 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
   (single RefSeq).
 \end{itemize}
 
-\includegraphics[width=10in]{figs/ss-class-alert-list}
+\includegraphics[width=10.5in]{figs/ss-class-alert-list}
 
 \end{center}
 \vfill
@@ -510,7 +538,7 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
   be detected.
 \end{itemize}
 
-\includegraphics[width=10in]{figs/ss-coverage-alert-list}
+\includegraphics[width=10.5in]{figs/ss-coverage-alert-list}
 
 \end{center}
 \vfill
@@ -521,17 +549,16 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 
 \begin{description}
 \item[Alignment]: Each sequence is aligned to its best-matching
-  model (globally with respect to sequence, locally with respect to
-  the model) and feature annotation is mapped from model to sequence
+  model and feature annotation is mapped from model to sequence
 \end{description}
 
 \begin{itemize} 
 \item CM instead of HMMER3 HMM alignment is used to improve accuracy
-  at at endpoints and allow structure information (when available). 
+  at endpoints and allow structure information (when available). 
   Output includes posterior probabilities of aligned nucleotides.
 \end{itemize}
 
-\includegraphics[width=10in]{figs/ss-alignment-alert-list}
+\includegraphics[width=10.5in]{figs/ss-alignment-alert-list}
 
 \end{center}
 \vfill
@@ -551,7 +578,7 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
   are enforced. 
 \end{itemize}
 
-\includegraphics[width=10in]{figs/ss-protein-alert-list}
+\includegraphics[width=10.5in]{figs/ss-protein-alert-list}
 
 \end{center}
 \vfill
