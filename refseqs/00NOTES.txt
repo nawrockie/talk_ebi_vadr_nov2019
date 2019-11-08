@@ -1,0 +1,17 @@
+<[(refseqs)]> cp $INF/notebook/19_0520_vadr_build_from_ft/updating-refseqs/caliciviridae.* ./
+<[(refseqs)]> cp $INF/notebook/19_0520_vadr_build_from_ft/updating-refseqs/flaviviridae.* ./
+
+38 caliciviridae seqs
+156 flaviviridae seqs
+
+3 of the caliciviridae are 'new' Norovirus we didn't test on so we left
+them out:
+From
+/panfs/pan1/infernal/notebook/19_0705_vadr_mscript_tests/00LOG.txt:
+
+    10	>gi|1573132677|ref|NC_040876.1| Norovirus GII isolate NORO_176-1_17_12_2015, complete genome
+    11	>gi|1571843827|ref|NC_040674.1| Marmot norovirus strain HT16, complete genome
+    12	>gi|1519157338|ref|NC_039897.1| Norovirus GI/Hu/JP/2007/GI.P3_GI.3/Shimizu/KK2866, complete genome
+
+<[(refseqs)]> esl-sfetch -f caliciviridae.41.20190625.fa caliciviridae.38.minus3.20190625.list > caliciviridae.38.minus3.20190625.fa
+

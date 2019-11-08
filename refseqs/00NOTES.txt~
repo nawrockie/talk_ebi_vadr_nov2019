@@ -1,0 +1,3 @@
+<[(refseqs)]> cp $INF/notebook/19_0520_vadr_build_from_ft/updating-refseqs/caliciviridae.* ./
+<[(refseqs)]> cp $INF/notebook/19_0520_vadr_build_from_ft/updating-refseqs/flaviviridae.* ./
+
