@@ -177,3 +177,32 @@ Ideas:
 - add posterior probability example, (at feature endpoint)?
 - add diagram showing software used by VADR:
   infernal, hmmer, easel, bio-easel, blastx, sequip
+
+==========================
+EPN, Mon Nov 11 05:57:27 2019
+
+run through:
+
+Definitely:
+DONE - figure out if/where to put slide with rejected seqs going straight
+  back to submitter
+- per-annotation-stage slides: combine the two bullet points into 1
+- flesh out 'slow' in limitationas
+- verify vapid and vigor error bullet points should be identical
+- 5' turncationed vapid vadr slide
+- cox1
+- brush up on Zika rna structure terms (download paper)
+
+Maybe:
+- slide showing software used by vadr (I think I have this in my 2014
+  NCBI job talk
+- percent identity zika and other viruses (get stats)
+- slide that shows how to map alignment to sequence? Annotate with
+  posterior probabilities
+- outline slides?
+- per virus annotations into table? (PROBABLY NOT)
+  
+
+12 min to lack of mp annotation
+17 min to submission slide with vadr box
+42 min to vapid

@@ -97,7 +97,7 @@ National Institutes of Health\\
 %16S rRNA                        & 333,121  & 8,015,297 & 18,262,402 & BLAST$^{*}$ \\
 16S rRNA                        & 333,121  & 8,015,297 \\
 & & \\                    
- COX1                           & 1,349,957  & 35,517  \\
+ COX1                            & 35,517  & 1,349,957  \\
 & & \\                    
  23S rRNA                        & 74,287  &   275,014  \\
 & & \\
@@ -465,8 +465,9 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
   \end{itemize}
 \item 156 \emph{Flaviviridae} models:
   \begin{itemize}
-  \item 10 Pegiivirus models
-  \item \textcolor{red}{8 HCV models}
+  \item 10 Pegivirus models
+%  \item \textcolor{red}{8 HCV models}
+  \item 8 HCV models
   \item 7 Pestivirus models
   \item \textcolor{red}{4 Dengue virus models}
   \item 2 West Nile virus models
@@ -507,16 +508,16 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \begin{center}
 
 \begin{description}
-\item[Classification]: Each sequence is compared against all models 
-  to determine its best-matching model to determine score only (no
-  hit boundaries)
+\item[Classification]: Each sequence is compared against 'profile'
+  HMM for each RefSeq to determine best-matching model (score only, no
+  hit boundaries) using the first 3 stages of HMMER3 pipeline. 
 \end{description}
 
-\begin{itemize} 
-\item First 3 stages (only) of the HMMER3 pipeline are used to
-  determine score quickly using a ``profile'' HMM of each model
-  (single RefSeq).
-\end{itemize}
+%\begin{itemize} 
+%\item First 3 stages (only) of the HMMER3 pipeline are used to
+%  determine score quickly using a ``profile'' HMM of each model
+%  (single RefSeq).
+%\end{itemize}
 
 \includegraphics[width=10.5in]{figs/ss-class-alert-list}
 
@@ -529,14 +530,15 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 
 \begin{description}
 \item[Coverage determination]: Each sequence is compared against
-  its best matching model again to obtain hit boundaries
+  its best matching model again using full HMMER3 pipeline to
+  determine hit boundaries.
 \end{description}
 
-\begin{itemize} 
-\item Full HMMER3 pipeline is used using best-matching model to
-  determine hit boundaries. Allows additional alert types to
-  be detected.
-\end{itemize}
+%\begin{itemize} 
+%\item Full HMMER3 pipeline with best-matching model 
+%  determine hit boundaries. Allows additional alert types to
+%  be detected.
+%\end{itemize}
 
 \includegraphics[width=10.5in]{figs/ss-coverage-alert-list}
 
@@ -589,15 +591,16 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \begin{center}
 \textbf{VADR results on all Norovirus and Dengue sequences}
 
+
 \scriptsize
-\begin{tabular}{l|r|r|r|r|r}
-                        &         & length       &         &         & fraction \\
- dataset                & \# seqs & range        & \# pass & \# fail & pass \\ \hline
-Norovirus complete (NC) & 1384    & 7380..7839   & 1157    & 227     & 0.836 \\
-Dengue complete (DC)    & 4580    & 10372..16254 & 4171    & 409     & 0.911 \\
+\begin{tabular}{l|r|r|r|r|r|r}
+                        &         & min    & max      &         &         & \textcolor{red}{fraction} \\
+ dataset                & \# seqs & length & length   & \# pass & \# fail & \textcolor{red}{pass} \\ \hline
+Norovirus complete (NC) & 1,384    & 7380  & 7839     & 1,157    & 227     & \textcolor{red}{0.836} \\
+Dengue complete (DC)    & 4,580    & 10372 & 16254    & 4,171    & 409     & \textcolor{red}{0.911} \\
 & & & & & \\
-Norovirus partial (NP)  & 32190   & 50..7376     & 29488   & 2702    & 0.916 \\
-Dengue partial  (DP)    & 20973   & 50..10370    & 17276   & 3697    & 0.824 \\
+Norovirus partial (NP)  & 32,190   & 50    & 7376     & 29,488   & 2,702    & \textcolor{red}{0.916} \\
+Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \textcolor{red}{0.824} \\
 \end{tabular}
 
 \end{center}
@@ -763,7 +766,7 @@ Dengue partial  (DP)    & 20973   & 50..10370    & 17276   & 3697    & 0.824 \\
   \item one has a frameshift 
   \item one fails because no similar reference is found
   \end{itemize}
-\item \textcolor{red}{Conclusion: VADR finds all problems that VAPiD finds that should
+\item \textcolor{red}{Conclusion: VADR finds all problems that VIGOR finds that should
   be caught.}
 \end{itemize}
 \end{center}
@@ -804,48 +807,124 @@ Dengue partial  (DP)    & 20973   & 50..10370    & 17276   & 3697    & 0.824 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
-\textbf{VADR documentation?}
+\textbf{VADR is general}
 \end{center}
+
+\small
+\begin{itemize}
+\item Now testing on COX1 (cytochrome C oxidase subunit I) sequences
+\item Models:
+  \begin{itemize}
+  \item Started with 9000 vetted COX1 protein sequences
+  \item Split based on taxonomy and aligned with MUSCLE
+  \item Derived 43 models (e.g. porifera, amphibia) covering 5 genetic codes
+  \item Classification stage compares against 43 models
+  \item Protein validation stage compares against 9000 proteins
+  \end{itemize}
+\item Goal: extend to other marker genes; building reference
+  sets and alignments is limiting
+\end{itemize}
 
 \vfill
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
+\textbf{Limitations}
+\end{center}
+
+\small
+\begin{itemize}
+\item nucleotide space, not protein space
+\item RefSeq or alignment must be 'representative',
+  \begin{itemize}
+    \item divergent sequences, regions, introns, gene order are problematic
+  \end{itemize}
+\end{itemize}
+
+\vfill
+\end{slide}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Limitations}
+\end{center}
+
+\small
+\begin{itemize}
+\item nucleotide space, not protein space
+\item RefSeq or alignment must be 'representative',
+  \begin{itemize}
+    \item divergent sequences, regions, introns, gene order are problematic
+  \end{itemize}
+\item current length limit of model is about 20Kb due to CM alignment memory
+  requirements
+\item slow
+  \begin{itemize}
+  \item Norovirus complete: 30 seconds/sequence (8X/6X slower than
+    VAPiD/VIGOR)
+  \item Dengue complete: 90 seconds/sequence (20X slower than VAPiD)
+  \item Norovirus partial: 1.5 seconds/sequence (1.5X slower than VIGOR)
+  \item Dengue partial: 9 seconds/sequence
+  \end{itemize}
+\end{itemize}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+\textbf{Limitations}
+\end{center}
+
+\small
+\begin{itemize}
+\item nucleotide space, not protein space
+\item RefSeq or alignment must be 'representative',
+  \begin{itemize}
+    \item divergent sequences, regions, introns, gene order are problematic
+  \end{itemize}
+\item current length limit of model is about 20Kb due to CM alignment memory
+  requirements
+\item slow
+  \begin{itemize}
+  \item Norovirus complete: 30 seconds/sequence (8X/6X slower than
+    VAPiD/VIGOR)
+    % 1.5K NC
+  \item Dengue complete: 90 seconds/sequence (20X slower than VAPiD)
+    % 4.5K DC
+  \item Norovirus partial: 1.5 seconds/sequence (1.5X slower than VIGOR)
+    % 32K NP
+  \item Dengue partial: 9 seconds/sequence
+    % 21K DP
+    % Noro:   1.5*30+32*1.5=93K seconds = 25 CPU hours
+    % Dengue: 4.5*90+21*9= 594K seconds = 165 CPU hours
+    % 190 hours / 8 cores = 24 hours on
+  \end{itemize}
+\item 190 CPU hours for all Norovirus and Dengue seqs (1 day on
+8 core machine)
+\end{itemize}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
 \textbf{Future directions}
 \end{center}
 
+\small
 \begin{itemize}
-\item alignment-based models 
-\item profile-based protein validation replace BLASTX
+\item alignment-based models for viruses (testing with HCV)
+\item profile-based protein validation to replace BLASTX
+\item allow scanning of large sequences (e.g. genomes)
 \item extend to more genes, including ribosomal RNAs and possible ITS
   sequences 
 \end{itemize}
 
 \vfill
 \end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-\textbf{Limitations}
-\end{center}
-
-\begin{itemize}
-\item works in nucleotide space
-\item RefSeq or alignment must be 'representative'
-  \begin{itemize}
-    \item any sequence that is not conserved is challenging
-    \item introns in random positions are problematic
-    \item different gene order is problematic
-  \end{itemize}
-\item current length limit of model is about 20Kb (CM alignment memory
-  requirements)
-\item slow
-\end{itemize}
-
-\vfill
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 
