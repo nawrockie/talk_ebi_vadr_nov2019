@@ -206,3 +206,17 @@ Maybe:
 12 min to lack of mp annotation
 17 min to submission slide with vadr box
 42 min to vapid
+
+===========================
+EPN, Tue Nov 12 04:40:34 2019
+
+7 min to virus list
+15 min to virus list with red
+30 min to end of stages
+
+- blank slide before virus list?
+- git update dnaorg talks
+- vapid: 'complete viral genomes'
+- cox1: emphasize modesl built from alignments
+- limiations comma after representative
+
