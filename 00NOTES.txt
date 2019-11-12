@@ -214,9 +214,10 @@ EPN, Tue Nov 12 04:40:34 2019
 15 min to virus list with red
 30 min to end of stages
 
-- blank slide before virus list?
 - git update dnaorg talks
 - vapid: 'complete viral genomes'
 - cox1: emphasize modesl built from alignments
 - limiations comma after representative
+
+- blank slide before virus list?
 
