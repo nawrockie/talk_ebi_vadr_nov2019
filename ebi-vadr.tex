@@ -71,6 +71,16 @@ National Institutes of Health\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
 \begin{center}
+\textbf{Manual NCBI GenBank indexing does not scale}
+
+\includegraphics[width=7in]{figs/submission-schematic-1}
+
+\vfill
+\end{center}
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
 \textbf{Sequence submissions are handled by expert NCBI indexers}
 \end{center}
 
@@ -113,16 +123,6 @@ National Institutes of Health\\
 \vfill
 %\tiny \flushleft{$\dagger$ TLS: Targeted Locus Study, currently only 16S submissions with $>=$ 2500 seqs, handled by Anji Johnston}
 %\tiny \flushleft{$\ddagger$ TLS submissions now processed with ribosensor}
-\end{slide}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{slide}
-\begin{center}
-\textbf{Manual NCBI GenBank indexing does not scale}
-
-\includegraphics[width=7in]{figs/submission-schematic-1}
-
-\vfill
-\end{center}
 \end{slide}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{slide}
@@ -751,16 +751,15 @@ Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \t
 \begin{itemize}
 \item 12 that fail both:
   \begin{itemize}
-  \item 9 have an internal stop (SEQ FEAT.InternalStop) or another
-    CDS translation problem (SEQ FEAT.CdsTransFail)
-  \item one has a start codon problem (SEQ FEAT.StartCodon)
+  \item 9 have an internal stop or another
+    CDS translation problem
+  \item one has a start codon problem
   \item one is reverse complemented
   \item one fails because no reference is found
   \end{itemize}
 \item 31 that fail only VAPiD are:
   \begin{itemize}
-  \item either 5’ truncated in the first CDS, 3’ truncated in the
-    final CDS, or both (at least one of SEQ FEAT.NoStop or SEQ FEAT.CdTransFail)
+  \item 5' and/or 3' truncated in the first or final CDS
   \item 
     otherwise valid according to the VADR and VIGOR results
   \end{itemize}
@@ -863,7 +862,7 @@ Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \t
   \begin{itemize}
   \item Started with 9000 vetted COX1 protein sequences
   \item Split based on taxonomy and aligned with MUSCLE
-  \item Derived 43 \emph{alignment-based} models (e.g. porifera, amphibia) covering 5 genetic codes
+  \item Derived 43 \textcolor{red}{\emph{alignment-based}} models (e.g. porifera, amphibia) covering 5 genetic codes
   \item Classification stage compares against 43 models
   \item Protein validation stage compares against 9000 proteins
   \end{itemize}
