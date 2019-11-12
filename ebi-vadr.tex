@@ -566,17 +566,34 @@ Measles morbillivirus     &       17,233 & \emph{Paramyxoviridae}  \\ % 11234
 \begin{slide}
 \begin{center}
 
-\begin{description}
-\item[Alignment]: Each sequence is aligned to its best-matching
-  model and feature annotation is mapped from model to sequence
-\end{description}
+\includegraphics[width=10.5in]{figs/v-annotate-stage3-1}
+\end{center}
 
-\begin{itemize} 
-\item CM instead of HMMER3 HMM alignment is used to improve accuracy
-  at endpoints and allow structure information (when available). 
-  Output includes posterior probabilities of aligned nucleotides.
-\end{itemize}
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
 
+\includegraphics[width=10.5in]{figs/v-annotate-stage3-2}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\includegraphics[width=10.5in]{figs/v-annotate-stage3-3}
+\end{center}
+
+\vfill
+\end{slide}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{slide}
+\begin{center}
+
+\includegraphics[width=10.5in]{figs/v-annotate-stage3-4}
 \includegraphics[width=10.5in]{figs/ss-alignment-alert-list}
 
 \end{center}
@@ -643,7 +660,7 @@ Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \t
   GenBank
 \item annotates each sequence based on best-match in reference
   database using blastn
-\item designed for complete genomes
+\item designed for complete viral genomes
 \item identifies early and absent stop codons and frameshift indels
 \item simplifies submission by adding metadata expected by GenBank
 \end{itemize}
@@ -834,7 +851,7 @@ Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \t
   \begin{itemize}
   \item Started with 9000 vetted COX1 protein sequences
   \item Split based on taxonomy and aligned with MUSCLE
-  \item Derived 43 models (e.g. porifera, amphibia) covering 5 genetic codes
+  \item Derived 43 \emph{alignment-based} models (e.g. porifera, amphibia) covering 5 genetic codes
   \item Classification stage compares against 43 models
   \item Protein validation stage compares against 9000 proteins
   \end{itemize}
@@ -853,7 +870,7 @@ Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \t
 \small
 \begin{itemize}
 \item nucleotide space, not protein space
-\item RefSeq or alignment must be 'representative',
+\item RefSeq or alignment must be 'representative'
   \begin{itemize}
     \item divergent sequences, regions, introns, gene order are problematic
   \end{itemize}
@@ -871,7 +888,7 @@ Dengue partial  (DP)    & 20,973   & 50    & 10370    & 17,276   & 3,697    & \t
 \small
 \begin{itemize}
 \item nucleotide space, not protein space
-\item RefSeq or alignment must be 'representative',
+\item RefSeq or alignment must be 'representative'
   \begin{itemize}
     \item divergent sequences, regions, introns, gene order are problematic
   \end{itemize}
